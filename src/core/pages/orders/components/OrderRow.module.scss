@@ -1,0 +1,162 @@
+.order {
+    font-family: "Mulish", sans-serif;
+    width: inherit;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    background: white;
+    align-items: center;
+    min-height: 3rem;
+    border-radius: 5px;
+    border: 1px solid #d9d9d9;
+    cursor: pointer;
+    transition: scale 0.2s ease-in;
+    margin: 5px 0;
+  
+    &:hover {
+      scale: 1.0034;
+    }
+  
+    @media screen and (max-width: 736px) {
+      margin-left: 5px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: calc(100vw - 30px);
+      height: auto;
+      padding: 10px;
+      align-items: baseline;
+      gap: 0.2rem;
+  
+      &:hover {
+        scale: 1;
+        background: rgb(244, 244, 244);
+      }
+    }
+  }
+  
+  .marker {
+    width: 5px;
+    height: 3rem;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    margin-right: 10px;
+  
+    @media screen and (max-width: 736px) {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      align-items: baseline;
+      width: 3px;
+      margin-left: -10px;
+      margin-top: -10px;
+      z-index: 999;
+    }
+  }
+  
+  .orderTitle {
+    width: 20%;
+    max-width: 16%;
+    margin-right: 40px;
+    font-weight: bold;
+    overflow: hidden;
+    font-size: 18px !important;
+    text-overflow: ellipsis;
+    height: 20px;
+    white-space: nowrap;
+  
+    @media screen and (max-width: 736px) {
+      width: 90%;
+      text-overflow: ellipsis;
+      max-width: 90%;
+      height: 20px;
+      display: flex;
+    }
+  }
+  
+  .orderCategory {
+    width: 18%;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  
+    i {
+      font-size: 1.2rem;
+      color: #696969;
+    }
+  
+    @media screen and (max-width: 736px) {
+      width: 100%;
+    }
+  }
+  
+  .requesterDetail {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  
+    i {
+      font-size: 1.2rem;
+      color: #696969;
+    }
+    @media screen and (max-width: 736px) {
+      width: 100%;
+    }
+    span {
+      color: blue;
+    }
+  }
+  
+  .dateAndTime {
+    width: 20%;
+    font-style: italic;
+    color: #696969;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  
+    i {
+      font-size: 1.2rem;
+      color: #696969;
+    }
+    @media screen and (max-width: 736px) {
+      width: 100%;
+    }
+  }
+  
+  .location {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  
+    i {
+      font-size: 1.2rem;
+      color: #696969;
+    }
+    @media screen and (max-width: 736px) {
+      width: 100%;
+    }
+  }
+  
+  .reportTag {
+    width: 10%;
+    display: flex;
+  
+    @media screen and (max-width: 736px) {
+      width: 100%;
+      justify-content: baseline;
+    }
+  }
+  
+  .hashtag {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: rgb(255, 21, 60);
+  }
+  
