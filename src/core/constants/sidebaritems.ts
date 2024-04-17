@@ -33,7 +33,7 @@ export const items: SideBarItemInterface[] = [
   {
     title: "Dispatch",
     icon: "local_shipping",
-    link: "/dispatch_riders",
+    link: "/dispatch-riders",
     adminItem: true
   }
 ];

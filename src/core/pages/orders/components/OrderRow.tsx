@@ -8,7 +8,7 @@ interface OrderProps {
 
 function OrderRow({ order }: OrderProps) {
   return (
-    <Link href={`/app/orders/${order.id}`}>
+    <Link href={`/orders/${order.id}`}>
       <div className={styles.order}>
         <div className={styles.marker} style={{background: status === "Pending" ? 'red' : 'rgb(96, 23, 255)'}}/>
         <div className={styles.orderTitle}>

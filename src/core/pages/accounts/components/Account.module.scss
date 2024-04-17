@@ -1,0 +1,85 @@
+.accountRow {
+    font-family: "Mulish", sans-serif;
+    width: inherit;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    background: white;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 4rem;
+    border-radius: 5px;
+    border: 1px solid #d9d9d9;
+    transition: scale 0.2s ease-in;
+    margin: 5px 0;
+
+    &:hover {
+        scale: 1.0034;
+      }
+}
+
+.dbIndex {
+   width: 5%;
+   padding: 0 15px;
+   font-weight: bold;
+   font-size: 1.5rem;
+}
+
+.photoAndName {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 10px; 
+    .accountPhoto {
+        width: 40px;
+        height: 40px;
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+    }
+}
+
+.phoneNumber {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    a {
+        color: blue;
+    }
+}
+
+.role {
+    margin: 0 5%;
+    background: red;
+    padding: 3px 10px;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.actions {
+    width: 10%;
+    display: flex;
+    gap: 10px;
+
+    button {
+        padding: 4px;
+        background: transparent;
+        border-radius: 5px;
+        border: 1px solid rgb(185, 185, 185);
+        display: flex;
+        justify-content: center; 
+        font-size: 1rem;
+
+        &:hover {
+            background: rgb(230, 230, 230);
+            cursor: pointer;
+        }
+    }
+    
+}
