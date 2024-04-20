@@ -6,7 +6,6 @@
     display: flex;
     background: white;
     align-items: center;
-    justify-content: space-between;
     min-height: 4rem;
     border-radius: 5px;
     border: 1px solid #d9d9d9;
@@ -15,25 +14,27 @@
 
     &:hover {
         scale: 1.0034;
-      }
+    }
 }
 
 .dbIndex {
-   width: 5%;
-   padding: 0 15px;
-   font-weight: bold;
-   font-size: 1.5rem;
+    width: 10%;
+    padding: 0 15px;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 
 .photoAndName {
-    width: 20%;
+    width: 30%;
     display: flex;
     align-items: center;
     gap: 20px;
-    padding: 0 10px; 
+    padding: 0 10px;
+
     .accountPhoto {
         width: 40px;
         height: 40px;
+
         img {
             width: 100%;
             height: 100%;
@@ -43,29 +44,36 @@
 }
 
 .phoneNumber {
-    width: 15%;
+    width: 25%;
     display: flex;
     align-items: center;
     gap: 10px;
+
     a {
         color: blue;
     }
 }
 
 .role {
-    margin: 0 5%;
-    background: red;
-    padding: 3px 10px;
-    color: #fff;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    font-weight: 800;
+    width: 15%;
+
+    p {
+        width: fit-content;
+        background: black;
+        color: white;
+        padding: 3px 10px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        border-radius: 10px;
+    }
 }
 
 .actions {
-    width: 10%;
+    width: 20%;
     display: flex;
     gap: 10px;
+    justify-content: end;
+    padding: 0 20px;
 
     button {
         padding: 4px;
@@ -73,7 +81,7 @@
         border-radius: 5px;
         border: 1px solid rgb(185, 185, 185);
         display: flex;
-        justify-content: center; 
+        justify-content: center;
         font-size: 1rem;
 
         &:hover {
@@ -81,5 +89,5 @@
             cursor: pointer;
         }
     }
-    
+
 }

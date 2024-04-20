@@ -1,8 +1,9 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import Chart from 'chart.js/auto';
-import './Dashboard.scss'; // Import Sass file for styling
+import styles from './Dashboard.module.scss'; // Import Sass file for styling
 import { firestore } from '@/core/firebase/firebase';
+import CountCard from './components/CountCard';
 
 const Dashboard: React.FC = () => {
   const [userData, setUserData] = useState<number>(0);
@@ -79,7 +80,13 @@ const Dashboard: React.FC = () => {
   }, [userData, orderData, restaurantData, dispatchRiderData]);
 
   return (
-    <div className="dashboard-container">
+    <div className={styles.dashboard_container}>
+      <div className={styles.countCards}>
+      <CountCard name='Orders' icon='shopping_cart' count={orderData} />
+      <CountCard name='Users' icon='group' count={userData} />
+      <CountCard name='Restaurants' icon='restaurant' count={restaurantData} />
+      <CountCard name='Dispatch Riders' icon='local_shipping' count={dispatchRiderData} />
+      </div>
       <canvas id="userChart" className='canvas'></canvas>
     </div>
   );

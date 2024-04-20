@@ -11,6 +11,7 @@ interface Order {
   restaurant: string;
   status: string;
   dispatchRider: string;
+  location: string
 }
 
 export default function Orders() {
@@ -29,6 +30,7 @@ export default function Orders() {
               restaurant: orderData.meals[0].restaurantName,
               status: orderData.currentStatus,
               dispatchRider: orderData.dispatchRider,
+              location: orderData.pickUpAddress.locationName
             };
           });
   

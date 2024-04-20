@@ -28,12 +28,12 @@ function OrderRow({ order }: OrderProps) {
         </div>
         <div className={styles.location}>
           <i className="material-icons-outlined">location_on</i>
-          <span>{order.restaurant}</span>
+          <span>{order.location}</span>
         </div>
         <div className={styles.reportTag}>
           {order.status}
         </div>
-        <div className={styles.hashtag}>{order.dispatchRider}</div>
+        <div className={styles.hashtag}>{order.dispatchRider || Null}</div>
       </div>
     </Link>
   );

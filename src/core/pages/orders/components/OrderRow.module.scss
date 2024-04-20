@@ -136,6 +136,11 @@
       font-size: 1.2rem;
       color: #696969;
     }
+
+    span {
+      text-overflow: ellipsis;
+      width: 70%;
+    }
     @media screen and (max-width: 736px) {
       width: 100%;
     }

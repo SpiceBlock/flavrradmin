@@ -1,25 +1,29 @@
-import React from 'react'
-import styles from './Account.module.scss'
-import Image from 'next/image'
+import React from 'react';
+import styles from './Account.module.scss';
+import Image from 'next/image';
 
-function Account() {
+interface AccountProps {
+  account: any; // Define a proper type for the account object
+}
+
+function Account({ account }: AccountProps) {
   return (
     <div className={styles.accountRow}>
-      <div className={styles.dbIndex}>1</div>
+      <div className={styles.dbIndex}>{account.dbIndex}</div>
       <div className={styles.photoAndName}>
         <div className={styles.accountPhoto}>
-          <Image width={100} height={100} src={"https://d3g5ywftkpzr0e.cloudfront.net/wp-content/uploads/2023/07/13220529/Artificial-Intelligence-in-Indonesia-The-current-state-and-its-opportunities.jpeg"} alt='Account Photo' />
+          <Image width={100} height={100} src={account.photoURL || "https://d3g5ywftkpzr0e.cloudfront.net/wp-content/uploads/2023/07/13220529/Artificial-Intelligence-in-Indonesia-The-current-state-and-its-opportunities.jpeg"} alt='Account Photo' />
         </div>
         <div className={styles.username}>
-          clintanimbom
+          {account.username}
         </div>
       </div>
       <div className={styles.phoneNumber}>
         <i className="material-icons-outlined">contact_mail</i>
-        <a href='679845'>680612360</a>
+        <a href={account.phoneNumber}>{account.phoneNumber}</a>
       </div>
       <div className={styles.role}>
-        Admin
+       <p>{(account.role.role).toUpperCase()}</p> 
       </div>
       <div className={styles.actions}>
         <button>
@@ -39,7 +43,7 @@ function Account() {
         </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default Account
+export default Account;
