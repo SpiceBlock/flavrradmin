@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import Chart from 'chart.js/auto';
+import { Chart } from 'react-google-charts';
 import styles from './Dashboard.module.scss'; // Import Sass file for styling
 import { firestore } from '@/core/firebase/firebase';
 import CountCard from './components/CountCard';
@@ -8,6 +8,7 @@ import CountCard from './components/CountCard';
 const Dashboard: React.FC = () => {
   const [userData, setUserData] = useState<number>(0);
   const [orderData, setOrderData] = useState<number>(0);
+  const [ordersData, setOrdersData] = useState([]);
   const [restaurantData, setRestaurantData] = useState<number>(0);
   const [dispatchRiderData, setDispatchRiderData] = useState<number>(0);
   let userChart: Chart;
@@ -34,60 +35,53 @@ const Dashboard: React.FC = () => {
     });
   }, []);
 
-  useEffect(() => {
-    // Create charts using Chart.js
-    const userChartCtx = document.getElementById('userChart') as HTMLCanvasElement;
-
-
-    if (userChart) {
-      userChart.destroy();
-    }
-
-    userChart = new Chart(userChartCtx, {
-      type: 'bar',
-      data: {
-        labels: ['Users', 'Orders', 'Restaurants', 'Dispatch Riders'],
-        datasets: [{
-          label: 'Data',
-          data: [userData, orderData, restaurantData, dispatchRiderData],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)'
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
+  const prepareChartData = () => {
+    const data = [['Date', 'Number of Orders']];
+    // Process orders and aggregate them by date
+    const ordersByDate: any = {};
+    ordersData.forEach((order: any) => {
+      const timeOfOrder = order.created_at.toDate()
+      const date = timeOfOrder.toISOString().split('T')[0]; // Get date string (YYYY-MM-DD)
+      console.log(order)
+      if (!ordersByDate[date]) {
+        ordersByDate[date] = 1;
+      } else {
+        ordersByDate[date]++;
       }
     });
+    // Convert aggregated data to array format suitable for the chart
+    Object.keys(ordersByDate).forEach(date => {
+      data.push([date, ordersByDate[date]]);
+    });
+    return data;
+  };
 
-    return () => {
-      userChart.destroy();
-    };
-  }, [userData, orderData, restaurantData, dispatchRiderData]);
 
   return (
     <div className={styles.dashboard_container}>
       <div className={styles.countCards}>
-      <CountCard name='Orders' icon='shopping_cart' count={orderData} />
-      <CountCard name='Users' icon='group' count={userData} />
-      <CountCard name='Restaurants' icon='restaurant' count={restaurantData} />
-      <CountCard name='Dispatch Riders' icon='local_shipping' count={dispatchRiderData} />
+        <CountCard name='Orders' icon='shopping_cart' count={orderData} />
+        <CountCard name='Users' icon='group' count={userData} />
+        <CountCard name='Restaurants' icon='restaurant' count={restaurantData} />
+        <CountCard name='Dispatch Riders' icon='local_shipping' count={dispatchRiderData} />
       </div>
-      <canvas id="userChart" className='canvas'></canvas>
+      <div className={styles.charts}>
+        <Chart
+          width={'500px'}
+          height={'300px'}
+          chartType="PieChart"
+          loader={<div>Loading Chart</div>}
+          data={[
+            ['Role', 'Number of Users'],
+            ['Customers', userData - dispatchRiderData],
+            ['Dispatch Riders', dispatchRiderData],
+          ]}
+          options={{
+            title: 'User Roles',
+          }}
+        />
+            
+      </div>
     </div>
   );
 };

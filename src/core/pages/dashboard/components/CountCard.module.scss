@@ -5,6 +5,10 @@
     border-radius: 10px;
     background: rgb(193, 191, 231);
     background: linear-gradient(90deg, rgba(193, 191, 231, 1) 0%, rgba(183, 183, 255, 1) 0%, rgba(0, 255, 64, 1) 100%);
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
 }
 
 .boxIconDiv {

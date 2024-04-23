@@ -33,7 +33,7 @@ function OrderRow({ order }: OrderProps) {
         <div className={styles.reportTag}>
           {order.status}
         </div>
-        <div className={styles.hashtag}>{order.dispatchRider || Null}</div>
+        <div className={styles.hashtag}>{order.dispatchRider || "Unassigned"}</div>
       </div>
     </Link>
   );
