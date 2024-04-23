@@ -4,19 +4,12 @@ import Navbar from '../components/organisms/Navbar';
 import Sidebar from '../components/organisms/Sidebar';
 
 
-let viewHeight: string
-
-if (typeof window !== "undefined") {
-  viewHeight = `calc(${window.innerHeight}px - 10px)`
-} else {
-  viewHeight = `calc(100vh - 10px)`
-}
 
 const AppWrapper = (Page: any, title: string): any => {
   async function AppPage() {
 
     return (
-      <div className={styles.mainApp} style={{ height: viewHeight }}>
+      <div className={styles.mainApp} >
         <Navbar />
         <Sidebar />
         <div className={styles.page}>
