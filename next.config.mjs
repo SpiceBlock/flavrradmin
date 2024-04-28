@@ -2,7 +2,7 @@
 
 const nextConfig = {
     images: {
-      domains: ['d3g5ywftkpzr0e.cloudfront.net'],
+      domains: ['d3g5ywftkpzr0e.cloudfront.net', 'firebasestorage.googleapis.com'],
     },
   };
   

@@ -16,8 +16,9 @@ function SideBarItem({ title, icon, link }: SideBarItemInterface) {
   const [shouldShowDot, setShouldShowDot] = useState(false)
 
   useEffect(() => {
+    if(window){
     setActive(!!window.location.href.includes(link));
-  }, [window.location.href]);
+  }}, [window.location.href]);
 
   function action() {
     router.push(link);

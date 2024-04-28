@@ -9,7 +9,7 @@ const AppWrapper = (Page: any, title: string): any => {
   async function AppPage() {
 
     return (
-      <div className={styles.mainApp} >
+      <div className={styles.mainApp}  >
         <Navbar />
         <Sidebar />
         <div className={styles.page}>
