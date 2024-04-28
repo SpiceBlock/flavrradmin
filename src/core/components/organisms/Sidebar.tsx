@@ -16,7 +16,7 @@ function SideBarItem({ title, icon, link }: SideBarItemInterface) {
   const [shouldShowDot, setShouldShowDot] = useState(false)
 
   useEffect(() => {
-    if(typeof window !== "undefined"){
+    if(typeof window !== "undefined") {
     setActive(!!window.location.href.includes(link));
   }}, [window.location.href]);
 
