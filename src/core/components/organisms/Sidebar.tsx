@@ -18,7 +18,7 @@ function SideBarItem({ title, icon, link }: SideBarItemInterface) {
   useEffect(() => {
     if(typeof window !== "undefined") {
     setActive(!!window.location.href.includes(link));
-  }}, [window.location.href]);
+  }}, []);
 
   function action() {
     router.push(link);
