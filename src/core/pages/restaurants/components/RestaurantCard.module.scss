@@ -1,0 +1,28 @@
+.restaurantCard {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .restaurantDetails {
+    padding: 20px;
+  }
+  
+  .ant-typography {
+    margin-bottom: 8px;
+  }
+  
+  .ant-divider-horizontal {
+    margin: 8px 0;
+  }
+  
+  .openStatus {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .closedStatus {
+    color: red;
+    font-weight: bold;
+  }
+  

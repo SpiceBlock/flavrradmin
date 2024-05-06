@@ -1,12 +1,19 @@
 import React from 'react';
 import styles from './Account.module.scss';
 import Image from 'next/image';
+import { redirect } from 'next/dist/server/api-utils';
+import { useRouter } from 'next/navigation';
 
 interface AccountProps {
   account: any; // Define a proper type for the account object
 }
 
 function Account({ account }: AccountProps) {
+  const router = useRouter();
+  function openDetails(uid: string) {
+    router.push(`/accounts/${uid}`);
+  }
+
   return (
     <div className={styles.accountRow}>
       <div className={styles.dbIndex}>{account.dbIndex}</div>
@@ -23,10 +30,10 @@ function Account({ account }: AccountProps) {
         <a href={account.phoneNumber}>{account.phoneNumber}</a>
       </div>
       <div className={styles.role}>
-       <p>{(account.role.role).toUpperCase()}</p> 
+        <p>{(account.role.role).toUpperCase()}</p>
       </div>
       <div className={styles.actions}>
-        <button>
+        <button onClick={()=>{openDetails(account.uid)}}>
           <i className="material-icons-outlined">
             visibility
           </i>

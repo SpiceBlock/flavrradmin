@@ -1,57 +1,57 @@
 "use client"
-import { useEffect, useState } from "react";
-import OrderRow from "./components/OrderRow";
-import { firestore } from "@/core/firebase/firebase";
 
-// Define the type for the order object
-interface Order {
-  id: string; // Change the type of id to string
-  username: string;
-  date: string;
-  restaurant: string;
-  status: string;
-  dispatchRider: string;
-  location: string
-}
+import { useEffect, useState } from "react";
+import { Input } from "antd";
+import OrderRow from "./components/OrderRow";
+import { fetchOrders } from "@/core/services/Orders";
 
 export default function Orders() {
-    const [formattedOrders, setFormattedOrders] = useState<Order[]>([]);
+    const [orders, setOrders] = useState<any>([]);
+    const [filteredOrders, setFilteredOrders] = useState<any>([]);
+    const [searchTerm, setSearchTerm] = useState<string>('');
 
     useEffect(() => {
-      const fetchOrders = async () => {
-        try {
-          const ordersSnapshot = await firestore.collection('orders').get();
-          const ordersData = ordersSnapshot.docs.map(doc => {
-            const orderData = doc.data();
-            return {
-              id: doc.id, // Use Firestore document ID as the id
-              username: orderData.user.name,
-              date: orderData.created_at.toDate().toLocaleString(),
-              restaurant: orderData.meals[0].restaurantName,
-              status: orderData.currentStatus,
-              dispatchRider: orderData.dispatchRider,
-              location: orderData.pickUpAddress.locationName
-            };
-          });
-  
-          setFormattedOrders(ordersData);
-        } catch (error) {
-          console.error('Error fetching orders:', error);
-        }
-      };
-  
-      fetchOrders();
+        const fetchOrdersData = async () => {
+            const ordersData = await fetchOrders();
+            setOrders(ordersData);
+            setFilteredOrders(ordersData);
+        };
+    
+        fetchOrdersData();
     }, []);
+
+    // Search functionality
+    useEffect(() => {
+        const filtered = orders.filter((order:any) => {
+            const searchableAttributes = [
+                order.username,
+                order.date,
+                order.restaurant,
+                order.status,
+                order.locationName,
+                order.phone,
+                order.deliveryAddress?.locationName,
+                order.pickUpAddress?.locationName,
+                order.user?.name,
+                order.user?.phone
+            ];
+            return searchableAttributes.some(attr => attr?.toLowerCase().includes(searchTerm.toLowerCase()));
+        });
+        setFilteredOrders(filtered);
+    }, [searchTerm, orders]);
 
     return (
         <div>
+            <Input
+                placeholder="Search orders..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
             {
-                formattedOrders.map((order) => {
-                    return (
-                            <OrderRow key={order.id} order={order} />
-                    )
-                })
+                filteredOrders.map((order: any) => (
+                    <OrderRow key={order.id} order={order} />
+                ))
             }
         </div>
-    )
+    );
 }

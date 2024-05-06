@@ -1,0 +1,36 @@
+/* UserDetailPage.module.scss */
+
+.user-detail-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .user-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  
+  .user-info,
+  .user-contact,
+  .user-role {
+    margin-bottom: 20px;
+  }
+  
+  .user-info h3,
+  .user-contact h3,
+  .user-role h3 {
+    margin-bottom: 10px;
+  }
+  

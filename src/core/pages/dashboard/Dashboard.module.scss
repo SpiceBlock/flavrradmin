@@ -1,3 +1,9 @@
+.dashboard_container{
+ min-height: 100vh;
+ height: auto;
+ padding-bottom: 3rem;
+}
+
 .canvas {
     width: 200px;
     height: 200px;
@@ -6,6 +12,7 @@
 .countCards {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
     @media (max-width: 768px) {
     flex-direction: column;
     justify-content: center;
@@ -14,4 +21,7 @@
 
 .charts {
     padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }

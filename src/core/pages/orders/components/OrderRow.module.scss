@@ -163,5 +163,10 @@
     justify-content: center;
     font-weight: bold;
     color: rgb(255, 21, 60);
+
+    @media screen and (max-width: 736px) {
+      width: 100%;
+      justify-content: baseline;
+    }
   }
   
