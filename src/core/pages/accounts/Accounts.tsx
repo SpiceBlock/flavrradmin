@@ -28,7 +28,7 @@ function Accounts() {
     const [users, setUsers] = useState<any>([]);
     const [filteredUsers, setFilteredUsers] = useState<any>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
-    const [loading, setLoading] = useState<bool>(false)
+    const [loading, setLoading] = useState<boolean>(false)
 
     useEffect(() => {
         const fetchUsers = async () => {
