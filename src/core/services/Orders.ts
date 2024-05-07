@@ -10,7 +10,7 @@ export const fetchOrders = async () => {
         id: doc.id,
         username: orderData.user.name,
         date: orderData.created_at.toDate().toLocaleString(),
-        restaurant: orderData.meals[0].restaurant.ame,
+        restaurant: orderData.meals[0].restaurant.name,
         status: orderData.currentStatus,
         dispatchRider: orderData.dispatchRider,
         location: orderData.pickUpAddress.locationName
