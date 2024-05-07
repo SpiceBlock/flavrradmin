@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect, ChangeEvent } from 'react';
-import { Input } from 'antd'; // Import the Input component from antd
+import { Input, Spin } from 'antd'; // Import the Input component from antd
 import Account from './components/Account';
 import { getListFrom } from '@/core/services/utils';
 
@@ -28,15 +28,24 @@ function Accounts() {
     const [users, setUsers] = useState<any>([]);
     const [filteredUsers, setFilteredUsers] = useState<any>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
+    const [loading, setLoading] = useState<bool>(false)
 
     useEffect(() => {
         const fetchUsers = async () => {
+            setLoading(true)
             const userList = await getListFrom('users');
             setUsers(userList);
-            setFilteredUsers(userList); // Initialize filtered users with the fetched data
+            setFilteredUsers(userList);
+            setLoading(false) // Initialize filtered users with the fetched data
         };
         fetchUsers();
     }, []);
+
+    if(loading) {
+        return (
+            <Spin tip="Loading..." />
+        )
+    }
 
     // Search functionality
     const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {

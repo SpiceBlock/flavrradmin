@@ -5,6 +5,7 @@ import styles from './Dashboard.module.scss'; // Import Sass file for styling
 import { fetchUserData, fetchOrderData, fetchConfirmedOrders, fetchUnconfirmedOrders, fetchRestaurantData } from '../../services/utils'
 import CountCard from './components/CountCard';
 import Loading from '@/core/components/atoms/Loading';
+import { Spin } from 'antd';
 
 const Dashboard: React.FC = () => {
   const [userCount, setUserCount] = useState<number>(0);
@@ -36,7 +37,7 @@ const Dashboard: React.FC = () => {
   return (
     <div className={styles.dashboard_container}>
       {loading ? (
-        <Loading />
+       <Spin tip="Loading..." />
       ) : (
         <>
           <div className={styles.countCards}>
