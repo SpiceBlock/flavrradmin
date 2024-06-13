@@ -1,6 +1,7 @@
 "use client"
 import Navbar from "@/core/components/organisms/Navbar";
 import Sidebar from "@/core/components/organisms/Sidebar";
+import { AuthProvider } from "@/core/hooks/AuthContext";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
