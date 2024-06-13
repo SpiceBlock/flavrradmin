@@ -6,6 +6,7 @@ import { fetchUserData, fetchOrderData, fetchConfirmedOrders, fetchUnconfirmedOr
 import CountCard from './components/CountCard';
 import Loading from '@/core/components/atoms/Loading';
 import { Spin } from 'antd';
+import Link from 'next/link';
 
 const Dashboard: React.FC = () => {
   const [userCount, setUserCount] = useState<number>(0);
@@ -41,12 +42,24 @@ const Dashboard: React.FC = () => {
       ) : (
         <>
           <div className={styles.countCards}>
+            <Link href={"/orders"}>
             <CountCard name='Total Orders' icon='shopping_cart' count={orderCount} />
+            </Link>
+            <Link href={"/orders"}>
             <CountCard name='Confirmed Orders' icon='shopping_cart' count={confirmedOrderCount} />
+            </Link>
+            <Link href={"/orders"}>
             <CountCard name='Unconfirmed Orders' icon='shopping_cart' count={unconfirmedOrderCount} />
+            </Link>
+            <Link href={"/accounts"}> 
             <CountCard name='Users' icon='group' count={userCount} />
+            </Link>
+            <Link href={"restaurants"}>
             <CountCard name='Restaurants' icon='restaurant' count={restaurantCount} />
+            </Link>
+            <Link href={"dispatch-riders"}>
             <CountCard name='Dispatch Riders' icon='local_shipping' count={dispatchRiderCount} />
+            </Link>
           </div>
           <div className={styles.charts}>
             <Chart
