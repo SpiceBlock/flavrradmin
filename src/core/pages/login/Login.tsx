@@ -5,12 +5,10 @@ import { Button, Input, Spin } from 'antd';
 import styles from './Login.module.scss';
 import { auth } from '@/core/firebase/firebase';
 import firebase from 'firebase/compat/app';
-import { useAuth } from '@/core/hooks/AuthContext';
 import { useRouter } from 'next/navigation';
 
 const Login: React.FC = () => {
   const router = useRouter(); // Initialize useRouter
-  const { currentUser, loading: authLoading } = useAuth();
   const [phoneNumber, setPhoneNumber] = useState('');
   const [otp, setOtp] = useState('');
   const [loading, setLoading] = useState(false);
@@ -56,10 +54,6 @@ const Login: React.FC = () => {
     setLoading(false);
   };
 
-  if (authLoading) {
-    return <Spin />;
-  }
-
   return (
     <div className={styles.main}>
       <div id="recaptcha-container"></div>
@@ -89,14 +83,16 @@ const Login: React.FC = () => {
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
               />
-              {error && <p className={styles.error}>{error}</p>}
               <br />
               <Button className={styles.submitbutton} onClick={handleVerifyOtp} disabled={loading}>
                 {loading ? <Spin /> : 'Verify OTP'}
               </Button>
+              
             </>
           )}
         </div>
+        {error && <p className={styles.error}>{error}</p>}
+
       </div>
     </div>
   );

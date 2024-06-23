@@ -14,8 +14,9 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase Client SDK
+let app: any
 if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
+  app = firebase.initializeApp(firebaseConfig);
 }
 
 // Export Firebase Auth and Firestore from Client SDK

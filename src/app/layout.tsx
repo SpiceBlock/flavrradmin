@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Head from "next/head";
-import { AuthProvider } from "@/core/hooks/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,9 +24,7 @@ export default function RootLayout({
           <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'></link>
         </head>
         <body className={inter.className}>
-          <AuthProvider>
           {children}
-          </AuthProvider>
           </body>
 
       </html>
