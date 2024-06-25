@@ -68,7 +68,6 @@ const Login: React.FC = () => {
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
-              {error && <p className={styles.error}>{error}</p>}
               <br />
               <Button className={styles.submitbutton} onClick={handleLogin} disabled={loading}>
                 {loading ? <Spin /> : 'Log In'}
